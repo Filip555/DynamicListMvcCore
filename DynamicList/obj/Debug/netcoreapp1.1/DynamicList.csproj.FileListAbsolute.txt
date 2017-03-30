@@ -1,0 +1,9 @@
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\bin\Debug\netcoreapp1.1\DynamicList.deps.json
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\bin\Debug\netcoreapp1.1\DynamicList.runtimeconfig.json
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\bin\Debug\netcoreapp1.1\DynamicList.runtimeconfig.dev.json
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\bin\Debug\netcoreapp1.1\DynamicList.dll
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\bin\Debug\netcoreapp1.1\DynamicList.pdb
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\obj\Debug\netcoreapp1.1\DynamicList.csprojResolveAssemblyReference.cache
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\obj\Debug\netcoreapp1.1\DynamicList.AssemblyInfo.cs
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\obj\Debug\netcoreapp1.1\DynamicList.dll
+c:\users\filipek\documents\visual studio 2017\Projects\DynamicList\DynamicList\obj\Debug\netcoreapp1.1\DynamicList.pdb

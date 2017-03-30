@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="col-xs-6">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Cake</a></li>
+        <li><a data-toggle="tab" href="#menu1">Additives </a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Cake</h3>
+                </div>
+                <div class="form-inline">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Cake</label>
+                            <div class="form-inline">
+                                <select class="form-control cal tx">
+                                    <option value="Flour">Flour</option>
+                                    <option value="Egg">Egg</option>
+                                    <option value="Yeast">Yeast</option>
+                                </select>
+                                <input type="number" class="form-control cal tx" name="lname">g
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Additives</h3>
+                </div>
+                <div class="form-inline">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Additives</label>
+                            <div class="form-inline">
+                                <select class="form-control cal tx">
+                                    <option value="Plum">Plums</option>
+                                    <option value="Nuts">Nuts</option>
+                                    <option value="Strawberry">Strawberry</option>
+                                </select>
+                                <input type="number" class="form-control cal tx" name="lname">g
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-info" type="button" onclick="displayResult()">Add</button>
+</div>
+<div class="col-xs-6">
+
+    <form method="post" action="/Home/Send">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Recipe
+                <div class="panel-body">
+                    <table class="table-striped" id="myTable">
+                        <tbody></tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                    <button class="btn btn-danger" type="submit" />Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var j = 0;
+    $("#idOfSelectTag").prepend('<option selected="selected" Value="null"></option>');
+    function displayResult() {
+        var oldName;
+        var i = 0;
+        var valueCalcu = 0;
+        var flagaReplace = false;
+        var currentVal;
+        $('.cal').each(function () {
+            i++;
+            if (i === 1) {
+                if ($(this).siblings('.tx').val() !== "" && $(this).val() !== "") {
+                    oldName = $(this).val();
+                }
+                $('.Name').each(function () {
+                    if (oldName === $(this).val()) {
+                        currentVal = $(this).siblings('.ValCal');
+                        valueCalcu = $(this).siblings('.ValCal').val();
+                        flagaReplace = true;
+                    }
+                });
+            }
+            if (i === 2) {
+                if (flagaReplace === true && $(this).val() !== '') {
+                    var addVal = parseFloat(valueCalcu) + parseFloat($(this).val());
+                    flagaReplace = false;
+                    currentVal.val(addVal);
+                }
+                else {
+                    if (oldName != null && $(this).val().length !== 0) {
+                        document.getElementById("myTable").insertRow(-1).innerHTML = '<span class="glyphicon glyphicon-remove-circle"' +
+                            'style = "float:left" ></span > <input class="Name form-control" style="margin:5px;width:160px;float:left;"' +
+                            'readonly type= "text" name= "[' + j + '].Name" value= "' + oldName + '" /> <input class="ValCal form-control"' +
+                            ' style = "margin:5px;width:110px;float:left" type= "text" name= "[' + j + '].Value" value= "' + $(this).val() + '" >'
+                        j++;
+                    }
+                }
+            }
+            if (i === 2) { i = 0; oldName = null };
+        });
+        $('.tx').each(function () {
+            $(this).val("");
+        });
+    }
+    $(document).on('click', '.glyphicon-remove-circle', function () {
+        $(this).parent().remove();
+        var j = 0;
+        var k = 0;
+        $('.Name').each(function () {
+            $(this).removeAttr('name');
+            $(this).attr('name', '[' + j + '].Name');
+            j++;
+        });
+        $('.ValCal').each(function () {
+            $(this).removeAttr('name');
+            $(this).attr('name', '[' + k + '].Value');
+            k++;
+        });
+    });
+</script>
